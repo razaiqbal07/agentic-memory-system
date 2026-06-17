@@ -30,10 +30,22 @@ def extract_memory(message:str):
             6. Information that is already implied in the conversation
             7. Time-sensitive information unless its a long-term fact
 
-            Respond in the below mentioned JSON format(Return ONLY valid JSON.):
+            Categories:
+            The memory categories could be:
+            1. personal_information
+            2. identity
+            3. preferences
+            4. relationships
+            5. skills
+            6. goals
+            7. others
+
+            Respond only in the below mentioned JSON format(Return ONLY valid JSON.). No additional text:
             {{
-                shouldSave: true or false,
-                message: Inferred message or null
+                category: Assign a category (name) to the memory from the "Categories" mentioned above,
+                importance: A number from 0 to 1 based on how important a piece of memory seems to be,
+                message: Message to save as memory,
+                shouldSave: true or false
             }}
 
             Examples:

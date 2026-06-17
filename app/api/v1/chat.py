@@ -10,5 +10,5 @@ async def save(req:Request):
     response = respond(body['text'])
     return {
         "success":True,
-        "res": response
+        "message": response
     }

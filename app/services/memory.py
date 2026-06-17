@@ -26,15 +26,15 @@ def init_collection():
         )
 
 
-def add(text:str):
-    embedding=create_embedding(text)
+def add(memory):
+    embedding=create_embedding(memory['message'])
     client.upsert(
         collection_name=COLLECTION_NAME,
         wait=True,
         points=[PointStruct(
             id=str(uuid4()),
             vector=embedding,
-            payload={"text": text},
+            payload=memory,
         )]
     )
 
