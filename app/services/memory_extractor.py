@@ -44,7 +44,7 @@ def extract_memory(message:str):
             {{
                 category: Assign a category (name) to the memory from the "Categories" mentioned above,
                 importance: A number from 0 to 1 based on how important a piece of memory seems to be,
-                message: Message to save as memory,
+                text: Message to save as memory,
                 shouldSave: true or false
             }}
 

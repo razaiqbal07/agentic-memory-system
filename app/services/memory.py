@@ -1,3 +1,4 @@
+from datetime import datetime
 from uuid import uuid4
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
@@ -27,14 +28,19 @@ def init_collection():
 
 
 def add(memory):
-    embedding=create_embedding(memory['message'])
+    embedding=create_embedding(memory['text'])
     client.upsert(
         collection_name=COLLECTION_NAME,
         wait=True,
         points=[PointStruct(
             id=str(uuid4()),
             vector=embedding,
-            payload=memory,
+            payload={
+                "text": memory["text"],
+                "category": memory["category"],
+                "importance": memory["importance"],
+                "created_at": datetime.utcnow().isoformat()
+            },
         )]
     )
 
